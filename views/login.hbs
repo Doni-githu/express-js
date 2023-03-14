@@ -1,5 +1,8 @@
 <div class="w-25 mx-auto form-2 text-center">
     <p class="fs-1">Login</p>
+    {{#if loginError}}
+    <p>{{loginError}}</p>
+    {{/if}}
     <form action="/login" method="post">
         <div class="form-floating mb-3">
             <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
