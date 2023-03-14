@@ -28,7 +28,7 @@ app.set('views', './views');
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(session({ secret: "Donni", resave: false, saveUninitialized: false }))
+app.use(session({ secret: "doni", resave: false, saveUninitialized: false }))
 app.use(flash())
 
 
@@ -41,7 +41,7 @@ app.use(ProductsRoutes)
 const startApp = () => {
     try {
         mongoose.set('strictQuery', true)
-        mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, })
+        mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
         const PORT = process.env.PORT ?? 5000
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);

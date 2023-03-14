@@ -1,7 +1,10 @@
 <div class="w-25 mx-auto form-2 text-center">
     <p class="fs-1">Login</p>
     {{#if loginError}}
-    <p>{{loginError}}</p>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> {{loginError}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     {{/if}}
     <form action="/login" method="post">
         <div class="form-floating mb-3">

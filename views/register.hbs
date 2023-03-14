@@ -1,7 +1,10 @@
 <div class="w-25 mx-auto form-2 text-center">
     <p class="fs-1">Register</p>
     {{#if registerError}}
-    <p>{{registerError}}</p>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> {{registerError}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     {{/if}}
     <form action="/register" method="post">
         <div class="d-flex gap-2">
