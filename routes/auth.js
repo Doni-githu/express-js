@@ -42,6 +42,8 @@ routes.post('/login', async (req, res) => {
         res.redirect('/login')
         return
     }
+    const token = generateJWTTOKEN(existUser._id)
+    res.cookie("token", token, { httpOnly: true, secure: true })
     res.redirect("/")
 })
 routes.post('/register', async (req, res) => {
@@ -54,7 +56,7 @@ routes.post('/register', async (req, res) => {
 
     const candidate = await User.findOne({ email })
 
-    if(candidate){
+    if (candidate) {
         req.flash("registerError", "Email taken")
         res.redirect('/register')
         return;
@@ -68,8 +70,8 @@ routes.post('/register', async (req, res) => {
         password: hashPassword,
     }
     const user = await User.create(userData)
-    const token = await generateJWTTOKEN(user._id)
-    console.log(token);
+    const token = generateJWTTOKEN(user._id)
+    res.cookie("token", token, { httpOnly: true, secure: tr })
     res.redirect("/")
 })
 

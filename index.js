@@ -52,6 +52,3 @@ const startApp = () => {
 }
 
 startApp()
-
-
-// mongodb+srv://ddonierov96:<password>@doni.odgzc3z.mongodb.net/?retryWrites=true&w=majority
