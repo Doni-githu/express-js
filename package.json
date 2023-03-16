@@ -1,7 +1,7 @@
 {
   "name": "myapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Boom shop",
   "main": "index.js",
   "type": "module",
   "scripts": {

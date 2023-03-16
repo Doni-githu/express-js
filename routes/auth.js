@@ -5,9 +5,6 @@ import { generateJWTTOKEN } from "../services/token.js";
 import isHave from "../middleware/have.js"
 const routes = Router()
 
-
-
-
 routes.get('/register', isHave, (req, res) => {
     res.render('register', {
         title: 'Register',
@@ -16,7 +13,6 @@ routes.get('/register', isHave, (req, res) => {
     })
 })
 
-
 routes.get('/login', isHave, (req, res) => {
     res.render('login', {
         title: 'Login',
@@ -24,8 +20,6 @@ routes.get('/login', isHave, (req, res) => {
         loginError: req.flash('loginError'),
     })
 })
-
-
 
 routes.post('/login', async (req, res) => {
     const { email, password } = req.body
@@ -50,6 +44,7 @@ routes.post('/login', async (req, res) => {
     res.cookie("token", token, { httpOnly: true, secure: true })
     res.redirect("/")
 })
+
 routes.post('/register', async (req, res) => {
     const { firstname, lastname, email, password } = req.body
     if (!firstname || !lastname || !email || !password) {
@@ -83,6 +78,5 @@ routes.get('/logout', (req, res) => {
     res.clearCookie('token')
     res.redirect('/')
 })
-
 
 export default routes

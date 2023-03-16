@@ -1,5 +1,5 @@
 import express from "express";
-import { engine, create } from "express-handlebars"
+import { create } from "express-handlebars"
 import mongoose from "mongoose";
 import flash from "connect-flash"
 import session from "express-session"
@@ -9,16 +9,11 @@ import ProductsRoutes from "./routes/products.js"
 import varMiddleware from "./middleware/var.js"
 import cookieParser from "cookie-parser";
 dotenv.config()
-
-
 const app = express()
 const hbs = create({
     defaultLayout: 'main',
     extname: 'hbs'
 })
-
-
-
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');

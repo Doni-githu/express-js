@@ -42,5 +42,4 @@ routes.post('/add-products', user, async (req, res) => {
     res.redirect('/')
 })
 
-
 export default routes
