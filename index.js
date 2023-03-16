@@ -6,7 +6,8 @@ import session from "express-session"
 import * as dotenv from "dotenv";
 import AuthRoutes from "./routes/auth.js"
 import ProductsRoutes from "./routes/products.js"
-
+import varMiddleware from "./middleware/var.js"
+import cookieParser from "cookie-parser";
 
 dotenv.config()
 
@@ -30,6 +31,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(session({ secret: "doni", resave: false, saveUninitialized: false }))
 app.use(flash())
+app.use(cookieParser())
+app.use(varMiddleware)
 
 
 

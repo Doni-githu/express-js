@@ -21,6 +21,12 @@
         <a class="me-3 py-2 text-dark text-decoration-none" href="/add">Add</a>
         {{/if}}
         <div class="btn-group">
+            {{#if token}}
+            <button class="btn btn-danger">
+                <a class="text-light text-decoration-none" href="/logout">Loguot</a>
+            </button>
+            {{else}}
+
             {{#if isLogin }}
             <button class="btn btn-primary active">
                 <a class="text-light text-decoration-none" href="/login">Login</a>
@@ -39,6 +45,10 @@
                 <a class="text-light text-decoration-none" href="/register">Register</a>
             </button>
             {{/if}}
+
+            {{/if}}
+
+
         </div>
     </nav>
 </div>
