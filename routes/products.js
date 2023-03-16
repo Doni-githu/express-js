@@ -4,7 +4,7 @@ import authMiddleware from "../middleware/auth.js"
 import user from "../middleware/user.js"
 const routes = Router()
 
-routes.get('/', (req, res) => {
+routes.get('/', async (req, res) => {
     res.render('index', {
         title: 'Boom Shop',
     })
@@ -36,14 +36,9 @@ routes.post('/add-products', user, async (req, res) => {
         res.redirect('/add')
         return;
     }
-    const productData = {
-        title: title,
-        description: description,
-        image: image,
-        price: price,
-    }
     console.log(req.userId);
-    const product = await Product.create(productData)
+    console.log(req.body);
+    // const product = await Product.create({ ...req.body, user: req.userId })
     res.redirect('/')
 })
 
