@@ -1,3 +1,11 @@
-.dark{
-    background-color: black;
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .first{
+    width: 49%;
+}
+.content .second{
+    width: 49%;
 }

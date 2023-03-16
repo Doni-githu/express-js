@@ -2,18 +2,13 @@ import { Router } from "express";
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import { generateJWTTOKEN } from "../services/token.js";
+import isHave from "../middleware/have.js"
 const routes = Router()
 
-function isHave(req, res){
-    if(req.cookies.token){
-        res.redirect('/')
-        return
-    }
-}
 
 
-routes.get('/register', (req, res) => {
-    isHave(req, res)
+
+routes.get('/register', isHave, (req, res) => {
     res.render('register', {
         title: 'Register',
         isRegister: true,
@@ -22,8 +17,7 @@ routes.get('/register', (req, res) => {
 })
 
 
-routes.get('/login', (req, res) => {
-    isHave(req, res)
+routes.get('/login', isHave, (req, res) => {
     res.render('login', {
         title: 'Login',
         isLogin: true,
@@ -85,7 +79,7 @@ routes.post('/register', async (req, res) => {
     res.redirect("/")
 })
 
-routes.get('/logout' , (req, res) => {
+routes.get('/logout', (req, res) => {
     res.clearCookie('token')
     res.redirect('/')
 })

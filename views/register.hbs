@@ -1,4 +1,4 @@
-<div class="w-25 mx-auto form-2 text-center">
+<div class="w-75 mx-auto">
     <p class="fs-1">Register</p>
     {{#if registerError}}
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -7,13 +7,13 @@
     </div>
     {{/if}}
     <form action="/register" method="post">
-        <div class="d-flex gap-2">
-            <div class="form-floating mb-3">
+        <div class="content">
+            <div class="form-floating first mb-3">
                 <input type="text" class="form-control" name="firstname" id="floatingInput"
                     placeholder="name@example.com">
                 <label for="floatingInput">First name</label>
             </div>
-            <div class="form-floating mb-3">
+            <div class="form-floating second mb-3">
                 <input type="text" class="form-control" name="lastname" id="floatingInput"
                     placeholder="name@example.com">
                 <label for="floatingInput">Last name</label>
