@@ -1,12 +1,14 @@
 import { Router } from "express";
 import Product from "../models/products.js"
 import authMiddleware from "../middleware/auth.js"
-import user from "../middleware/user.js"
+import userMiddleware from "../middleware/user.js"
 const routes = Router()
 
 routes.get('/', async (req, res) => {
+    const products = await Product.find()
     res.render('index', {
         title: 'Boom Shop',
+        products: products
     })
 })
 
@@ -29,16 +31,14 @@ routes.get('/add', authMiddleware, (req, res) => {
     })
 })
 
-routes.post('/add-products', user, async (req, res) => {
+routes.post('/add-products', userMiddleware, async (req, res) => {
     const { title, description, image, price } = req.body
     if (!title || !description || !image || !price) {
         req.flash("ErrorAdd", "All fiels is required")
         res.redirect('/add')
         return;
     }
-    console.log(req.userId);
-    console.log(req.body);
-    // const product = await Product.create({ ...req.body, user: req.userId })
+    const product = await Product.create({ ...req.body, user: req.userId })
     res.redirect('/')
 })
 
