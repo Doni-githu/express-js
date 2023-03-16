@@ -8,11 +8,14 @@ import AuthRoutes from "./routes/auth.js"
 import ProductsRoutes from "./routes/products.js"
 import varMiddleware from "./middleware/var.js"
 import cookieParser from "cookie-parser";
+import utils from "./utils/index.js";
+import user from "./middleware/user.js";
 dotenv.config()
 const app = express()
 const hbs = create({
     defaultLayout: 'main',
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: utils
 })
 
 app.engine('hbs', hbs.engine);
@@ -27,6 +30,7 @@ app.use(session({ secret: "doni", resave: false, saveUninitialized: false }))
 app.use(flash())
 app.use(cookieParser())
 app.use(varMiddleware)
+app.use(user)
 
 
 
