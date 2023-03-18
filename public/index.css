@@ -14,3 +14,28 @@
     height: 300px !important;
     object-fit: cover;
 }
+
+.image{
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.flex{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.flex-first{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-second{
+    width: 55%;
+}

@@ -1,0 +1,11 @@
+<div class="image" style="background-image: url({{product.image}});"></div>
+<h1 class="text-center mt-3">{{product.title}}</h1>
+<div class="flex">
+    <div class="flex-first">
+        <p class="fs-3 text-muted">Created At: <span class="text-dark">{{formatDate product.createdAt}}</span></p>
+        <p class="fs-3 text-muted">Updated at: <span class="text-dark">{{formatDate product.updatedAt}}</span></p>
+    </div>
+    <div class="flex-second">
+        <p>{{product.description}}</p>
+    </div>
+</div>

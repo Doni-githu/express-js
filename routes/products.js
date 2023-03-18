@@ -5,13 +5,11 @@ import userMiddleware from "../middleware/user.js"
 const routes = Router()
 
 routes.get('/', async (req, res) => {
-    const products = await Products.find().populate('user').lean()
-
+    const products = await Products.find().lean()
     res.render('index', {
         title: 'Boom Shop',
         products: products.reverse(),
         userId: req.userId ? req.userId.toString() : null,
-        HomeInfo: req.flash('HomeInfo')
     })
 })
 
@@ -32,7 +30,6 @@ routes.get('/products', async (req, res) => {
 routes.get('/add', authMiddleware, (req, res) => {
     if (!req.cookies.token) {
         res.redirect('/')
-        req.flash('loginError', 'Please, register or login in site')
         return;
     }
     res.render('add', {
@@ -53,6 +50,13 @@ routes.post('/add-products', userMiddleware, async (req, res) => {
     }
     await Products.create({ ...req.body, user: req.userId })
     res.redirect('/')
+})
+routes.get('/product/:id', async (req, res) => {
+    const id = req.params.id ? req.params.id : null
+    const product = await Products.findById(id).populate('user').lean()
+    res.render('product', {
+        product: product
+    })
 })
 
 

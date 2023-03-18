@@ -1,4 +1,4 @@
-import moment from "moment/moment"
+import moment from "moment"
 export default {
     ifequal(a, b, options){
         if(a == b){

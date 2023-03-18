@@ -7,7 +7,6 @@ import * as dotenv from "dotenv";
 import AuthRoutes from "./routes/auth.js"
 import ProductsRoutes from "./routes/products.js"
 import varMiddleware from "./middleware/var.js"
-import inHave from "./middleware/have.js"
 import cookieParser from "cookie-parser";
 import hbsHandler from "./utils/index.js";
 import userMiddleware from "./middleware/user.js";
@@ -32,8 +31,6 @@ app.use(flash())
 app.use(cookieParser())
 app.use(varMiddleware)
 app.use(userMiddleware)
-app.use(inHave)
-
 
 app.use(AuthRoutes)
 app.use(ProductsRoutes)
@@ -43,6 +40,7 @@ const startApp = () => {
     try {
         mongoose.set('strictQuery', true)
         mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, })
+            .then(()=> console.log("Mongo DB connected"))
         const PORT = process.env.PORT ?? 5000
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
