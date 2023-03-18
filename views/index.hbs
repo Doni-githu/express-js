@@ -1,6 +1,32 @@
-{{#if products.length}}
-<br>
+<div class='marketing'>
+    <div class='row featurette'>
+        <div class='col-md-7 mt-10rem'>
+            <h2 class='featurette-heading fw-normal lh-1'>First featurette heading.
+                <span class='text-muted'>It’ll blow your mind.</span>
+            </h2>
+            <p class='lead'>Some great placeholder content for the first featurette here. Imagine some exciting prose
+                here.</p>
+        </div>
+        <div class='col-md-5'>
+            <img src='/pic1.png' width='100%' />
+        </div>
+    </div>
+</div>
+<hr class='featurette-divider' />
+<div class='row featurette'>
+    <div class='col-md-7 order-md-2 mt-10rem'>
+        <h2 class='featurette-heading fw-normal lh-1'>Oh yeah, it’s that good. <span class='text-muted'>See for
+                yourself.</span></h2>
+        <p class='lead'>Another featurette? Of course. More placeholder content here to give you an idea of how this
+            layout would work
+            with some actual real-world content in place.</p>
+    </div>
+    <div class='col-md-5 order-md-1'>
+        <img src='/pic2.png' width='100%' />
+    </div>
+</div>
 
+{{#if products.length}}
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     {{#if HomeInfo}}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -28,8 +54,8 @@
                     <a href="/product/{{_id}}" type="button" class="btn btn-outline-primary">Detail</a>
                     {{#if @root.token}}
                     {{#ifequal user @root.userId}}
-                    <button type="button" class="btn btn-outline-secondary">Edit</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                    <a type="button" class="btn btn-outline-secondary" href="/edit/{{_id}}">Edit</a>
+                    <a href="/delete/{{_id}}" type="button" class="btn btn-outline-danger">Delete</a>
                     {{/ifequal}}
                     {{/if}}
                 </div>

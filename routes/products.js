@@ -59,6 +59,39 @@ routes.get('/product/:id', async (req, res) => {
     })
 })
 
+routes.get('/edit/:id', async (req, res) => {
+    const id = req.params.id ? req.params.id : null
+    const product = await Products.findById(id).populate('user').lean()
+    res.render('edit', {
+        product: product,
+        ErrorEdit: req.flash('ErrorEdit')
+    })
+})
 
+routes.post('/edit-product/:id', async (req, res) => {
+    const { title, description, image, price } = req.body
+    const id = req.params.id
+    if (!title || !description || !image || !price) {
+        req.flash("ErrorEdit", "All fiels is required")
+        res.redirect(`/edit/${id}`)
+        return;
+    }
+
+    const product = await Products.findByIdAndUpdate(id, req.body, { new: true })
+    res.redirect('/products')
+})
+
+routes.post('/delete-product/:id', async (req, res) => {
+    const id = req.params.id
+    await Products.findByIdAndRemove(id)
+    res.redirect('/')
+})
+routes.get('/delete/:id', async (req, res) => {
+    const id = req.params.id
+    const product = await Products.findById(id).populate('user').lean()
+    res.render('delete', {
+        product: product
+    })
+})
 
 export default routes

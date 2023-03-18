@@ -13,6 +13,8 @@ routes.get('/register', isHave, (req, res) => {
     })
 })
 
+
+
 routes.get('/login', isHave, (req, res) => {
     res.render('login', {
         title: 'Login',
