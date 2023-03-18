@@ -9,3 +9,8 @@
 .content .second{
     width: 49%;
 }
+
+.img{
+    height: 300px !important;
+    object-fit: cover;
+}

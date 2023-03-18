@@ -1,1 +1,21 @@
-<h1 class="dark">Products page</h1>
+{{#if pro.length}}
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {{#each pro}}
+    <div class="col">
+        <div class="card shadow-sm">
+            <img src="{{image}}" class="img" />
+            <div class="card-body">
+                <p class="card-text fw-bold">{{title}}</p>
+                <p class="card-text">{{description}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="text-muted">Author: <span class="text-dark">{{user.firstName}}</span></p>
+                    <small class="text-muted fs-5">{{price}}$</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<h1 class="text-center text-danger">No products</h1>
+{{/if}}

@@ -1,3 +1,4 @@
+import moment from "moment/moment"
 export default {
     ifequal(a, b, options){
         if(a == b){
@@ -5,5 +6,8 @@ export default {
         }
 
         return options.inverse(this)
+    },
+    formatDate(date){
+        return moment(date).format("DD MMM, YYYY")
     }
 }

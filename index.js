@@ -7,15 +7,16 @@ import * as dotenv from "dotenv";
 import AuthRoutes from "./routes/auth.js"
 import ProductsRoutes from "./routes/products.js"
 import varMiddleware from "./middleware/var.js"
+import inHave from "./middleware/have.js"
 import cookieParser from "cookie-parser";
-import utils from "./utils/index.js";
-import user from "./middleware/user.js";
+import hbsHandler from "./utils/index.js";
+import userMiddleware from "./middleware/user.js";
 dotenv.config()
 const app = express()
 const hbs = create({
     defaultLayout: 'main',
     extname: 'hbs',
-    helpers: utils
+    helpers: hbsHandler,
 })
 
 app.engine('hbs', hbs.engine);
@@ -30,8 +31,8 @@ app.use(session({ secret: "doni", resave: false, saveUninitialized: false }))
 app.use(flash())
 app.use(cookieParser())
 app.use(varMiddleware)
-app.use(user)
-
+app.use(userMiddleware)
+app.use(inHave)
 
 
 app.use(AuthRoutes)
